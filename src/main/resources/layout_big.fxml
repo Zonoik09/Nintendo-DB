@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jonathan.ejercicio2.Controller">
+   <children>
+      <AnchorPane prefHeight="111.0" prefWidth="893.0" style="-fx-background-color: #6baff6;">
+         <children>
+            <Label fx:id="nintendoDB" layoutX="342.0" layoutY="15.0" text="Nintendo DB" textAlignment="CENTER">
+               <font>
+                  <Font name="JetBrains Mono Light" size="38.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <HBox prefHeight="537.0" prefWidth="900.0">
+         <children>
+            <Pane prefHeight="513.0" prefWidth="239.0">
+               <children>
+                  <ScrollPane fx:id="scroll" layoutX="12.0" layoutY="48.0" prefHeight="455.0" prefWidth="200.0">
+                     <content>
+                        <VBox fx:id="yPane" prefHeight="452.0" prefWidth="197.0" />
+                     </content>
+                  </ScrollPane>
+                  <ComboBox fx:id="choice" layoutX="29.0" layoutY="14.0" prefHeight="25.0" prefWidth="167.0" />
+               </children></Pane>
+            <AnchorPane fx:id="AnchPane" prefHeight="513.0" prefWidth="664.0" />
+         </children></HBox>
+   </children>
+</VBox>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="itemPane" maxHeight="-Infinity" minHeight="-Infinity" onMouseClicked="#information" prefHeight="50.0" style="-fx-border-color: #D3D3D3;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jonathan.ejercicio2.ControllerListItem">
+   <children>
+      <Label fx:id="title" layoutX="45.0" layoutY="12.0" prefHeight="25.0" prefWidth="100.0" text="Nintendo Nes" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="12.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imagen" fitHeight="31.0" fitWidth="33.0" layoutX="3.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</AnchorPane>
