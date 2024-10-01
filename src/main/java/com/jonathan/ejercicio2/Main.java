@@ -17,8 +17,8 @@ public class Main extends Application {
 
         Parent largeroot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/layout_big.fxml")));
         Scene scene = new Scene(largeroot);
-        Parent smallroot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/layout_small.fxml")));
-        Scene scene1 = new Scene(smallroot);
+//        Parent smallroot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/layout_small.fxml")));
+//        Scene scene1 = new Scene(smallroot);
 //        if (stage.getWidth() < 400) {
 //            stage.setScene(scene1);
 //        } else {
@@ -36,10 +36,10 @@ public class Main extends Application {
                 if (stage.getScene() != scene) {
                     stage.setScene(scene);
                 }
-            } else {
-                if (stage.getScene() != scene1) {
-                    stage.setScene(scene1);
-                }
+//            } else {
+//                if (stage.getScene() != scene1) {
+//                    stage.setScene(scene1);
+//                }
             }
         });
 
