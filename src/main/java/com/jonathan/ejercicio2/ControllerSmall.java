@@ -1,16 +1,17 @@
 package com.jonathan.ejercicio2;
 
+import com.almasb.fxgl.core.collection.Array;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
-
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import org.json.JSONArray;
-
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -19,22 +20,27 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
+public class ControllerSmall {
 
-public class Controller {
     @FXML
-    private ComboBox<String> choice;
+    public ScrollPane scrollsmall;
+    public Label nintendoDB;
+    public Button back;
     @FXML
-    private VBox yPane;
-    @FXML
-    private AnchorPane AnchPane;
-
+    private VBox AnchPane;
 
     private JSONArray consolesInfo;
     private JSONArray jocsInfo;
     private JSONArray personatgesInfo;
-    private static Controller instance;
+    private static ControllerSmall instance;
+    private final List<String> categories = new ArrayList<>(Arrays.asList("Consoles", "Jocs", "Personatges"));
+
+
 
     // Cargar los datos desde el JSON
     private void loadJsonData() {
@@ -47,7 +53,7 @@ public class Controller {
         }
     }
 
-    public static Controller getInstance() {
+    public static ControllerSmall getInstance() {
         return instance;
     }
 
@@ -73,41 +79,52 @@ public class Controller {
         try {
             instance = this;
             loadJsonData();
-            choiceMenu();
+            initialLoad();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    @FXML
-    private void choiceMenu() {
-        if (choice != null) {
-            choice.getItems().addAll("Consoles","Jocs","Personatges");
-            choice.setOnAction(this::onComboBoxSelection);
+    public void initialLoad() throws IOException {
+        for (int i = 0; i < categories.size(); i++) {
+            String nom = categories.get(i);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/choiceLayout.fxml"));
+            Parent itemTemplate = loader.load();
+            ControllerChoiceItem itemController = loader.getController();
+            itemController.setTitle(nom);
+            AnchPane.getChildren().add(itemTemplate);
         }
     }
 
-    private void onComboBoxSelection(ActionEvent event) {
-        String selected = choice.getValue();
-        yPane.getChildren().clear();
+    public void loadCategory(String categoryName) {
         AnchPane.getChildren().clear();
-        switch (selected) {
+
+        switch (categoryName) {
             case "Consoles":
                 VBox(consolesInfo);
-                loadLayout("/consoleLayout.fxml");
                 break;
             case "Jocs":
                 VBox(jocsInfo);
-                loadLayout("/gameLayout.fxml");
                 break;
             case "Personatges":
                 VBox(personatgesInfo);
-                loadLayout("/characterLayout.fxml");
                 break;
             default:
+                System.err.println("Categoría desconocida: " + categoryName);
                 break;
         }
     }
+
+    @FXML
+    public void goBack(ActionEvent event) {
+        try {
+            AnchPane.getChildren().clear();
+            initialLoad();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void VBox(JSONArray jsonArray) {
         try {
@@ -124,7 +141,7 @@ public class Controller {
                 itemController.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/assets/images/" + imatge))));
                 itemController.setData(item);
 
-                yPane.getChildren().add(itemTemplate);
+                AnchPane.getChildren().add(itemTemplate);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -151,18 +168,13 @@ public class Controller {
             return "/gameLayout.fxml";
         }
     }
-    
+
 
     public void loadInfo(JSONObject data) {
         try {
-            // Determinar qué layout cargar
             String layoutPath = determineLayout(data);
-
-            // Cargar la nueva vista
             FXMLLoader loader = new FXMLLoader(getClass().getResource(layoutPath));
             Parent detailNode = loader.load();
-
-            // Cargar datos específicos del ítem
             switch (layoutPath) {
                 case "/characterLayout.fxml" -> {
                     ControllerCharacterItem controller = loader.getController();
@@ -178,7 +190,6 @@ public class Controller {
                 }
             }
 
-            // Reemplazar el contenido actual en el AnchorPane
             AnchPane.getChildren().clear();
             AnchPane.getChildren().add(detailNode);
         } catch (IOException e) {
@@ -186,5 +197,4 @@ public class Controller {
         }
 
     }
-
 }

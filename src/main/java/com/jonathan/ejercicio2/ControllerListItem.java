@@ -28,10 +28,15 @@ public class ControllerListItem {
     public void setImage(Image img) {
         imagen.setImage(img);
     }
+
     public void information(MouseEvent event) {
         Controller controllerInstance = Controller.getInstance();
+        ControllerSmall ControllerInstanceSmall = ControllerSmall.getInstance();
         if (controllerInstance != null) {
             controllerInstance.loadInfo(itemData);
+        }
+        if (ControllerInstanceSmall != null) {
+            ControllerInstanceSmall.loadInfo(itemData);
         }
     }
 }

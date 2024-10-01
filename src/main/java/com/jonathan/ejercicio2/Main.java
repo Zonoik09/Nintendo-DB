@@ -17,13 +17,7 @@ public class Main extends Application {
 
         Parent largeroot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/layout_big.fxml")));
         Scene scene = new Scene(largeroot);
-//        Parent smallroot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/layout_small.fxml")));
-//        Scene scene1 = new Scene(smallroot);
-//        if (stage.getWidth() < 400) {
-//            stage.setScene(scene1);
-//        } else {
-            stage.setScene(scene);
-//        }
+
         stage.setTitle("Nintendo DB");
         stage.setWidth(900);
         stage.setMinWidth(350);
@@ -36,14 +30,22 @@ public class Main extends Application {
                 if (stage.getScene() != scene) {
                     stage.setScene(scene);
                 }
-//            } else {
-//                if (stage.getScene() != scene1) {
-//                    stage.setScene(scene1);
-//                }
+            } else {
+                Parent smallroot = null;
+                try {
+                    smallroot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/layout_small.fxml")));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                Scene scene1 = new Scene(smallroot);
+                if (!Objects.equals(stage.getScene(), scene1)) {
+                    stage.setScene(scene1);
+                }
             }
         });
 
         stage.show();
+
     }
 
     public static void main(String[] args) {

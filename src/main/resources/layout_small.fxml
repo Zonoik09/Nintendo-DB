@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jonathan.ejercicio2.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jonathan.ejercicio2.ControllerSmall">
    <children>
       <AnchorPane prefHeight="131.0" prefWidth="335.0" style="-fx-background-color: #6baff6;">
          <children>
-            <Label fx:id="nintendoDB" layoutX="39.0" layoutY="31.0" text="Nintendo DB" textAlignment="CENTER">
+            <Label fx:id="nintendoDB" layoutX="92.0" layoutY="31.0" text="Nintendo DB" textAlignment="CENTER">
                <font>
-                  <Font size="48.0" />
+                  <Font size="40.0" />
                </font>
             </Label>
+            <Button fx:id="back" layoutX="12.0" layoutY="23.0" mnemonicParsing="false" onAction="#goBack" prefHeight="74.0" prefWidth="71.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="⬅">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
       <ScrollPane fx:id="scrollsmall" layoutX="-3.0" layoutY="130.0" prefHeight="520.0" prefWidth="335.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="518.0" prefWidth="333.0" />
-        </content>
+         <content>
+            <VBox fx:id="AnchPane" prefHeight="516.0" prefWidth="332.0" />
+         </content>
       </ScrollPane>
    </children>
 </AnchorPane>

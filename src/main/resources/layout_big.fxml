@@ -22,7 +22,7 @@
       </AnchorPane>
       <HBox prefHeight="537.0" prefWidth="900.0">
          <children>
-            <Pane prefHeight="513.0" prefWidth="239.0">
+            <Pane prefHeight="513.0" prefWidth="309.0">
                <children>
                   <ScrollPane fx:id="scroll" layoutX="12.0" layoutY="48.0" prefHeight="455.0" prefWidth="200.0">
                      <content>
@@ -31,7 +31,7 @@
                   </ScrollPane>
                   <ComboBox fx:id="choice" layoutX="29.0" layoutY="14.0" prefHeight="25.0" prefWidth="167.0" />
                </children></Pane>
-            <AnchorPane fx:id="AnchPane" prefHeight="513.0" prefWidth="664.0" />
+            <AnchorPane fx:id="AnchPane" prefHeight="513.0" prefWidth="740.0" />
          </children></HBox>
    </children>
 </VBox>
